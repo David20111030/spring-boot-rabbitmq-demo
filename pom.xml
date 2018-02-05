@@ -20,6 +20,7 @@
 
     <modules>
         <module>hello-world</module>
+        <module>exchange-types</module>
     </modules>
 
     <properties>
