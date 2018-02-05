@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: exchange-types
+
+server:
+  port: 9999
+
