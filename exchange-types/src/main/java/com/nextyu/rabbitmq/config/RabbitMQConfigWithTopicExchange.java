@@ -17,7 +17,7 @@ public class RabbitMQConfigWithTopicExchange {
     public final static String ROUTING_KEY_ORANGE = "fruit.orange";
     public final static String ROUTING_KEY = "fruit.apple";
     public final static String ROUTING_KEY_2 = "fruit.*";
-    public final static String ROUTING_KEY_3 = "fruit.#";
+    public final static String ROUTING_KEY_3 = "fruit#";
     public final static String EXCHANGE_NAME = "topic.exchange";
 
     // 创建队列
