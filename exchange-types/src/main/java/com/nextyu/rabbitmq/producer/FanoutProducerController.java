@@ -26,6 +26,7 @@ public class FanoutProducerController {
                 rabbitTemplate.convertAndSend(RabbitMQConfigWithFanoutExchange.EXCHANGE_NAME, RabbitMQConfigWithFanoutExchange.ROUTING_KEY_APPLE, value);
             }
 
+            /*
             for (int i = 0; i < count; i++) {
                 String value = "banana " + i;
                 Console.log("banana send message {}", value);
@@ -38,6 +39,7 @@ public class FanoutProducerController {
                 Console.log("orange send message {}", value);
                 rabbitTemplate.convertAndSend(RabbitMQConfigWithFanoutExchange.EXCHANGE_NAME, RabbitMQConfigWithFanoutExchange.ROUTING_KEY_ORANGE, value);
             }
+            */
         }).start();
         return "ok";
     }

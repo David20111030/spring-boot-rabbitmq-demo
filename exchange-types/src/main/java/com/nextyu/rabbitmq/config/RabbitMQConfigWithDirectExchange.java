@@ -15,9 +15,9 @@ public class RabbitMQConfigWithDirectExchange {
     public final static String QUEUE_NAME_APPLE = "direct.exchange.queue.apple";
     public final static String QUEUE_NAME_BANANA = "direct.exchange.queue.banana";
     public final static String QUEUE_NAME_ORANGE = "direct.exchange.queue.orange";
-    public final static String ROUTING_KEY_APPLE = "direct.exchange.key.apple";
-    public final static String ROUTING_KEY_BANANA = "direct.exchange.key.banana";
-    public final static String ROUTING_KEY_ORANGE = "direct.exchange.key.orange";
+    public final static String ROUTING_KEY_APPLE = "fruit.apple";
+    public final static String ROUTING_KEY_BANANA = "fruit.banana";
+    public final static String ROUTING_KEY_ORANGE = "fruit.orange";
     public final static String EXCHANGE_NAME = "direct.exchange";
 
     // 创建队列

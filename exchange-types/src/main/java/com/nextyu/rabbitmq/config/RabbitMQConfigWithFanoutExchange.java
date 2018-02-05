@@ -12,9 +12,9 @@ public class RabbitMQConfigWithFanoutExchange {
     public final static String QUEUE_NAME_APPLE = "fanout.exchange.queue.apple";
     public final static String QUEUE_NAME_BANANA = "fanout.exchange.queue.banana";
     public final static String QUEUE_NAME_ORANGE = "fanout.exchange.queue.orange";
-    public final static String ROUTING_KEY_APPLE = "fanout.exchange.key.apple";
-    public final static String ROUTING_KEY_BANANA = "fanout.exchange.key.banana";
-    public final static String ROUTING_KEY_ORANGE = "fanout.exchange.key.orange";
+    public final static String ROUTING_KEY_APPLE = "fruit.apple";
+    public final static String ROUTING_KEY_BANANA = "fruit.banana";
+    public final static String ROUTING_KEY_ORANGE = "fruit.orange";
     public final static String EXCHANGE_NAME = "fanout.exchange";
 
     // 创建队列

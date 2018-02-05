@@ -25,6 +25,7 @@ public class TopicProducerController {
                 rabbitTemplate.convertAndSend(RabbitMQConfigWithTopicExchange.EXCHANGE_NAME, RabbitMQConfigWithTopicExchange.ROUTING_KEY_APPLE, value);
             }
 
+            /*
             for (int i = 0; i < count; i++) {
                 String value = "banana " + i;
                 Console.log("banana send message {}", value);
@@ -37,6 +38,7 @@ public class TopicProducerController {
                 Console.log("orange send message {}", value);
                 rabbitTemplate.convertAndSend(RabbitMQConfigWithTopicExchange.EXCHANGE_NAME, RabbitMQConfigWithTopicExchange.ROUTING_KEY_ORANGE, value);
             }
+            */
         }).start();
         return "ok";
     }
