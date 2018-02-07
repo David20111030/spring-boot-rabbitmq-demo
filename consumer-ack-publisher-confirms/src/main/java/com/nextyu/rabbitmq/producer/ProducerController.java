@@ -4,7 +4,7 @@ import cn.hutool.core.lang.Console;
 import com.nextyu.rabbitmq.RabbitMQConfig;
 import com.nextyu.rabbitmq.RedisConfig;
 import com.nextyu.rabbitmq.util.DefaultKeyGenerator;
-import com.nextyu.rabbitmq.util.RabbitMetaMessage;
+import com.nextyu.rabbitmq.entity.RabbitMetaMessage;
 import org.springframework.amqp.AmqpException;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessagePostProcessor;
@@ -43,12 +43,9 @@ public class ProducerController {
                 Console.log("send message = {}", value);
 
                 // 再发送到 rabbitmq
-                rabbitTemplate.convertAndSend(RabbitMQConfig.EXCHANGE_NAME, RabbitMQConfig.ROUTING_KEY, value, new MessagePostProcessor() {
-                    @Override
-                    public Message postProcessMessage(Message message) throws AmqpException {
-                        message.getMessageProperties().setMessageId(id);
-                        return message;
-                    }
+                rabbitTemplate.convertAndSend(RabbitMQConfig.EXCHANGE_NAME, RabbitMQConfig.ROUTING_KEY, value, (message) -> {
+                    message.getMessageProperties().setMessageId(id);
+                    return message;
                 }, new CorrelationData(id));
             }
         }).start();

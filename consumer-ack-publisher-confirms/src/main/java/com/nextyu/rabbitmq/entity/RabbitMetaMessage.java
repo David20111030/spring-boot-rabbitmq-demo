@@ -1,4 +1,4 @@
-package com.nextyu.rabbitmq.util;
+package com.nextyu.rabbitmq.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

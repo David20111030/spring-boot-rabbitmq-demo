@@ -1,7 +1,7 @@
 package com.nextyu.rabbitmq;
 
 import cn.hutool.core.lang.Console;
-import com.nextyu.rabbitmq.util.RabbitMetaMessage;
+import com.nextyu.rabbitmq.entity.RabbitMetaMessage;
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
@@ -56,10 +56,13 @@ public class RabbitMQConfig {
     }
 
     @Bean
-    public SimpleMessageListenerContainer container2(ConnectionFactory connectionFactory, ChannelAwareMessageListener listener) {
+    public SimpleMessageListenerContainer container(ConnectionFactory connectionFactory, ChannelAwareMessageListener listener) {
         SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
         container.setConnectionFactory(connectionFactory);
+
+        // 指定消费者
         container.setMessageListener(listener);
+        // 指定监听的队列
         container.setQueueNames(QUEUE_NAME);
 
         // 设置消费者的 ack 模式为手动确认模式

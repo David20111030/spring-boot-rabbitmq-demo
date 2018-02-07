@@ -21,6 +21,7 @@
     <modules>
         <module>hello-world</module>
         <module>exchange-types</module>
+        <module>consumer-ack-publisher-confirms</module>
     </modules>
 
     <properties>
