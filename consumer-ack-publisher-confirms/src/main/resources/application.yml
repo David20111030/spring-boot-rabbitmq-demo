@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: consumer-ack-publisher-confirms
+  redis:
+    host: localhost
+    port: 6379
+    timeout: 10000
+server:
+  port: 9999
+
