@@ -49,8 +49,6 @@ public class ProducerController {
                 }, new CorrelationData(id));
             }
         }).start();
-
-
         return "ok";
     }
 

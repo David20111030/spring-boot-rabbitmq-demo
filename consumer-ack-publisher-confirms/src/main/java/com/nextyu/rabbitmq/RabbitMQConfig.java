@@ -49,7 +49,10 @@ public class RabbitMQConfig {
         connectionFactory.setUsername("guest");
         connectionFactory.setPassword("guest");
 
+        // 设置 生产者 confirms
         connectionFactory.setPublisherConfirms(true);
+
+        // 设置 生产者 Returns
         connectionFactory.setPublisherReturns(true);
 
         return connectionFactory;
@@ -81,10 +84,11 @@ public class RabbitMQConfig {
         // 而且 ReturnCallback 比 ConfirmCallback 先回调，意思就是 ReturnCallback 执行完了才会执行 ConfirmCallback
         rabbitTemplate.setMandatory(true);
 
+        // 设置 ConfirmCallback 回调
         rabbitTemplate.setConfirmCallback((correlationData, ack, cause) -> {
             Console.log("ConfirmCallback , correlationData = {} , ack = {} , cause = {} ", correlationData, ack, cause);
             // 如果发送到交换器都没有成功（比如说删除了交换器），ack 返回值为 false
-            // 如果发送到交换器成功，但是没有匹配的队列（比如说取消了绑定），ack 返回值为 true （这是一个坑，需要注意）
+            // 如果发送到交换器成功，但是没有匹配的队列（比如说取消了绑定），ack 返回值为还是 true （这是一个坑，需要注意）
             if (ack) {
                 String messageId = correlationData.getId();
                 RabbitMetaMessage rabbitMetaMessage = (RabbitMetaMessage) redisTemplate.opsForHash().get(RedisConfig.RETRY_KEY, messageId);
@@ -99,6 +103,7 @@ public class RabbitMQConfig {
 
         });
 
+        // 设置 ReturnCallback 回调
         // 如果发送到交换器成功，但是没有匹配的队列，就会触发这个回调
         rabbitTemplate.setReturnCallback((message, replyCode, replyText,
                                           exchange, routingKey) -> {
